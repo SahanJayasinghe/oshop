@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "oshop-dc459": {
+      "hosting": {
+        "oshop": [
+          "oshop-dc459"
+        ]
+      }
+    }
+  }
+}
