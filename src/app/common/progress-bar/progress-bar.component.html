@@ -1,0 +1,14 @@
+<span *ngIf="percent !== 100; else finished">Uploading Image...</span>
+<ng-template #finished>Upload completed!</ng-template>
+<div class="progress" style="height: 20px;">
+  <div 
+    class="progress-bar progress-bar-striped" 
+    role="progressbar" 
+    [ngStyle]="{'width': percent + '%'}" 
+    [attr.aria-valuenow]="percent" 
+    aria-valuemin="0" 
+    aria-valuemax="100"
+  >
+    {{ percent | number: '1.0-2' }}%
+  </div>
+</div>

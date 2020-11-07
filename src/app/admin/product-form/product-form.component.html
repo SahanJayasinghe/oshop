@@ -1,0 +1,69 @@
+<div class="row">
+  <div [ngClass]="(id) ? 'col-md-7' : 'col-md-12'">
+    <form #f="ngForm" class="container pb-5" (ngSubmit)="(id) ? update() : save(f.value)">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input #title="ngModel" [(ngModel)]="product.title" type="text" name="title" id="title" class="form-control" maxlength="25" pattern="^(?=.*[A-Za-z])[A-Za-z\d\-/()\\.,\s]{1,25}$" required>
+        <div *ngIf="title.touched && title.invalid" class="alert alert-danger">
+          <div *ngIf="title.errors.required">Title is required </div>
+          <div *ngIf="title.errors.maxlength">Title shouldn't be more than 25 characters long </div>
+          <div *ngIf="title.errors.pattern">Title should contain atleast one alphabetic character & shouldn't contain special characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input #price="ngModel" [(ngModel)]="product.price" type="number" name="price" id="price" class="form-control" min="0" max="1000" (blur)="validatePrice(price.value)" required>
+        </div>
+        <div *ngIf="price.touched && price.invalid" class="alert alert-danger">
+          <div *ngIf="price.errors.required"> Price is required </div>
+        </div>
+        <div *ngIf="priceError" class="alert alert-danger"> {{ priceError }} </div>
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
+          <option value="" disabled>Select a category</option>
+          <option *ngFor="let cat of categories" [value]="cat.key">{{ cat.name }}</option>
+        </select>
+        <div *ngIf="category.touched && category.invalid" class="alert alert-danger"> Please select a Category </div>
+      </div>
+      <div class="form-group">
+        <label for="image">Image</label>
+        <!-- <input ngModel #imageUrl="ngModel" type="text" name="imageUrl" id="imageUrl" class="form-control" required> -->
+        <div [ngClass]="{'custom-dropzone': !file, 'custom-dropzone-with-img': file}" ngx-dropzone [accept]="'image/*'" id="image" [multiple]="false" (change)="onSelect($event)">
+          <ngx-dropzone-label>
+            <div>
+              <h2>Drag & Drop image file</h2>
+              <h3> Or </h3>
+              <h2>Click to browse</h2>
+            </div>
+          </ngx-dropzone-label>
+          <div *ngIf="file" class="mx-5">
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let file of files"  [file]="file" [removable]="true" (removed)="onRemove(file)">
+            </ngx-dropzone-image-preview>
+            <ngx-dropzone-label>{{ file.name }}</ngx-dropzone-label>
+          </div>
+        </div>
+        <div *ngIf="imgError" class="alert alert-danger mt-2">{{ imgError }}</div>
+        <!-- <div *ngIf="imageUrl.touched && imageUrl.invalid" class="alert alert-danger"> Image is required </div> -->
+      </div>
+      <div class="row d-flex justify-content-between">
+        <button *ngIf="!id" class="btn btn-lg btn-primary" [disabled]="!f.valid || !file || priceError">Submit</button>
+        <button *ngIf="id" class="btn btn-lg btn-success" [disabled]="!f.valid || priceError">Update</button>
+        <button *ngIf="id" type="button" class="btn btn-lg btn-danger" (click)="delete()">Delete</button>
+      </div>
+      <div *ngIf="file && uploadPercent$ | async as per" class="row justify-content-center">
+        <div class="col-md-8">
+          <app-progress-bar [percent]="per"></app-progress-bar>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="id" class="col-md-5">
+    <app-product-card [product]="product"></app-product-card>
+  </div>
+</div>

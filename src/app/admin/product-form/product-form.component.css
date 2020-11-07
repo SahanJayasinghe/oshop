@@ -1,0 +1,34 @@
+ngx-dropzone,
+.custom-dropzone {
+  margin: 20px;
+}
+
+.custom-dropzone {
+	height: 250px;
+	background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    #ccc 10px,
+    #ccc 20px
+  );
+	color: rgb(32, 30, 30);
+	border: 5px solid rgb(28, 78, 136);
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+.custom-dropzone-with-img {
+  height: 250px;
+  background: #eee;
+  color: rgb(32, 30, 30);
+	border: 5px solid rgb(28, 78, 136);
+	border-radius: 5px;
+  font-size: 14px;
+}
+
+.custom-dropzone.ngx-dz-hovered {
+  background: #eee;
+  opacity: 0.7;
+  border: 5px dashed rgb(30, 104, 138);
+}

@@ -1,1 +1,93 @@
-<p>admin-products works!</p>
+<div class="row justify-content-end mb-3 mx-2">
+  <!-- <div class="col-md-5">
+    <input #query type="text" class="form-control" placeholder="search products..." (keyup)="filter(query.value, category.value)">
+  </div>
+  <div class="col-md-4">
+    <select #category name="category" id="category" class="form-control" (change)="filter(query.value, category.value)">
+      <option value="all" selected>All</option>
+      <option *ngFor="let cat of categories" [value]="cat.key">{{ cat.name }}</option>
+    </select>
+  </div> -->
+  <div class="col-md-6">
+    <h4 class="display-4">Organic Products</h4>
+  </div>
+  <div class="col-md-3">
+    <div class="row justify-content-end">
+      <a routerLink="/admin/products/new" class="btn btn-outline-primary font-weight-bold">Add New Product</a>
+    </div>
+  </div>  
+</div>
+
+<form>
+  <div class="form-group form-inline row justify-content-end pb-3">
+    <div class="col-md-8">
+      <input class="form-control ml-2 w-100" type="text" name="searchTerm" placeholder="search products..." [(ngModel)]="service.searchTerm"/>
+    </div>
+    <div class="col-md-4">
+      <select name="category" id="category" class="form-control ml-3" [(ngModel)]="service.category">
+        <option value="all" selected>All</option>
+        <option *ngFor="let cat of categories" [value]="cat.key">{{ cat.name }}</option>
+      </select>
+    </div>
+    <div class="row mx-3" *ngIf="service.loading$ | async">
+      <span class="text-info" >Loading...</span>
+      <div class="spinner-border text-info ml-2" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col" sortable="title" (sort)="onSort($event)">Title</th>
+      <th scope="col" sortable="price" (sort)="onSort($event)">Price</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products$ | async; index as i">
+      <th scope="row">{{ (service.page - 1) * service.pageSize + i+1 }}</th>
+      <td>
+        <ngb-highlight [result]="product.title" [term]="service.searchTerm"></ngb-highlight>
+      </td>
+      <td>{{ product.price | currency }}</td>
+      <!-- <td><ngb-highlight [result]="product.price | currency" [term]="service.searchTerm"></ngb-highlight></td> -->
+      <td><a [routerLink]="['/admin/products/', product.key]">Edit</a></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination
+      [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+    </ngb-pagination>
+
+    <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+      <option [ngValue]="5">5 items per page</option>
+      <option [ngValue]="10">10 items per page</option>
+      <option [ngValue]="20">20 items per page</option>
+    </select>
+  </div>
+
+</form>
+
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of pagedProducts">
+      <td><ngb-highlight [result]="p.title" [term]="query.value"></ngb-highlight></td>
+      <td>{{ p.price | currency }}</td>
+      <td>
+        <a [routerLink]="['/admin/products/', p.key]">Edit</a>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
