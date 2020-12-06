@@ -43,7 +43,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     //   this.filteredProducts = products;
     // })
 
-    this.categoryService.getCategories().snapshotChanges().pipe(
+    this.categoryService.getAll().snapshotChanges().pipe(
       map(categorySnapshots => {
         return categorySnapshots.map(snapshot => ({ key: snapshot.key, ...snapshot.payload.val() }))
       })

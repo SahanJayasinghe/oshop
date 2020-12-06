@@ -1,1 +1,44 @@
-<p>shopping-cart works!</p>
+<div class="row justify-content-center py-3">
+  <div class="col-md-6">
+    <h4 class="display-4">Shopping Cart</h4>
+  </div>
+</div>
+<div *ngIf="cart$ | async as cart">
+  <p class="text-info pb-3">You have {{cart.totalQuantity}} items in the shopping cart.</p>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th></th>
+        <th scope="col">Product</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col" class="text-center">Quantity</th>
+        <th scope="col" class="text-right pr-5">Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let key of cart.getItemKeys()">
+        <td class="align-middle"><div [style.backgroundImage]="'url(' + cart.items[key].imageUrl + ')'" class="thumbnail float-right pr-4"></div></td>
+        <td class="align-middle">{{ cart.items[key].title }}</td>
+        <td class="align-middle">{{ cart.items[key].price | currency }}</td>
+        <td class="align-middle">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <app-product-quantity [product]="getItemWithKey(key, cart.items[key])" [quantity]="cart.items[key].quantity" [parent]="'cart'"></app-product-quantity>
+            </div>
+          </div>
+        </td>
+        <td class="align-middle text-right pr-5">{{ cart.items[key].price * cart.items[key].quantity | currency }}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="text-right pr-5">Cart Total = {{ cart.getTotalPrice() | currency }}</th>
+      </tr>
+    </tfoot>
+  </table>
+  <button class="btn btn-sm btn-danger" (click)="clearCart()">Clear Shopping Cart</button>
+</div>

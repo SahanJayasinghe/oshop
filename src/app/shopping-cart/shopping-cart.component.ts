@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CartItem, ShoppingCart } from '../models/shopping-cart';
+import { ShoppingCartService } from '../services/shopping-cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
+  cart$: Observable<ShoppingCart>;
 
-  constructor() { }
+  constructor(private cartService: ShoppingCartService) { }
 
   ngOnInit(): void {
+    this.cart$ = this.cartService.Cart$;
+  }
+
+  getItemWithKey(key:string, item:CartItem): CartItem {
+    return {key, ...item}
+  }
+
+  clearCart() {
+    this.cartService.clearCart()
   }
 
 }

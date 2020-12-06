@@ -26,6 +26,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { ProductCardComponent } from './common/product-card/product-card.component';
 import { ProgressBarComponent } from './common/progress-bar/progress-bar.component';
+import { CategoryListComponent } from './products/category-list/category-list.component';
 
 import { SortableHeader } from './common/directives/sortable.directive';
 
@@ -36,6 +37,8 @@ import { ProductService } from './services/product.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { ProductsTableService } from './services/products-table.service';
+import { ShoppingCartService } from './services/shopping-cart.service';
+import { ProductQuantityComponent } from './common/product-quantity/product-quantity.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,9 @@ import { ProductsTableService } from './services/products-table.service';
     ProductFormComponent,
     ProductCardComponent,
     ProgressBarComponent,
-    SortableHeader
+    SortableHeader,
+    CategoryListComponent,
+    ProductQuantityComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +79,8 @@ import { ProductsTableService } from './services/products-table.service';
     ProductService,
     AuthGuard,
     AdminAuthGuard,
-    ProductsTableService
+    ProductsTableService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })

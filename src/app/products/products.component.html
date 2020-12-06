@@ -1,1 +1,15 @@
-<p>products works!</p>
+<!-- <p>products works!</p> -->
+<div class="row" *ngIf="cart$ | async as cart">
+  <div class="col-3">
+    <app-category-list [selected]="selectedCategory"></app-category-list>
+  </div>
+  <div class="col">
+    <div class="row row-cols-1 row-cols-md-3">
+      <ng-container *ngFor="let product of filteredProducts">
+        <div class="col mb-4">
+          <app-product-card [product]="product" [image-height]="'10rem'" [button-name]="'Add to Cart'" [shopping-cart]="cart"></app-product-card>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<!-- <p>category-list works!</p> -->
+<div class="sticky-top">
+  <div class="list-group">
+    <a 
+      routerLink="/products" 
+      class="list-group-item list-group-item-action" 
+      [class.active]="!selectedCategory"
+      [ngStyle]="!selectedCategory ? {'background-color': '#1aa542', 'border-color': '#1aa542'} : {}"
+    >
+      All Categories
+    </a>
+    <a 
+      *ngFor="let cat of categories$ | async" 
+      routerLink="/products" [queryParams]="{category: cat.key}" 
+      class="list-group-item list-group-item-action"
+      [class.active]="cat.key === selectedCategory"
+      [ngStyle]="cat.key === selectedCategory ? {'background-color': '#1aa542', 'border-color': '#1aa542'} : {}"
+    >
+      {{ cat.name }}
+    </a>
+  </div>
+</div>

@@ -20,4 +20,8 @@ export class UserService {
       email: user.email
     });
   }
+
+  assignCart(uid: string, cartId: string) {
+    return this.db.object(`/users/${uid}`).update({cartId});
+  }
 }

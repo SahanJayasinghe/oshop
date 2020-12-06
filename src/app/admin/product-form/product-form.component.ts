@@ -31,7 +31,7 @@ export class ProductFormComponent implements OnInit {
     private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.categoryService.getCategories().snapshotChanges().pipe(
+    this.categoryService.getAll().snapshotChanges().pipe(
       map(categorySnapshots => {
         return categorySnapshots.map(snapshot => ({ key: snapshot.key, ...snapshot.payload.val() }))
       })
