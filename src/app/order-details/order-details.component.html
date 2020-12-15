@@ -1,0 +1,47 @@
+<div class="row justify-content-center mb-4">
+  <div class="col-md-6">
+    <p class="display-4">Order Details</p>
+  </div>
+</div>
+<div *ngIf="order" class="row justify-content-start mx-5 mb-3">
+  <div class="col-md-6">
+    <div class="alert alert-info" role="alert">
+      Order created at: <span class="font-weight-bold"> {{ order.datePlaced | date:'medium' }} </span>
+    </div>
+  </div>
+</div>
+<div *ngIf="order" class="row justify-content-between">
+  <div class="col-md-6">
+    <div class="card mr-3">
+      <div class="card-header">
+        <h5 class="card-title">Delivery Address</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text font-weight-bold">{{ order.shipping.name }}, </p>
+        <p class="card-text">{{ order.shipping.line1 }}, </p>
+        <p class="card-text">{{ order.shipping.line2 }}, </p>
+        <p class="card-text">{{ order.shipping.city }} </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card border-light ml-2">
+      <div class="card-header bg-transparent border-dark font-weight-bold">Order Summary</div>
+      <div class="card-body text-dark">
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let item of order.items" class="list-group-item row d-flex justify-content-between">
+            <div class="col-5"> {{ item.product.title }} </div>
+            <div class="col-2"> x {{ item.quantity }} </div>
+            <div class="col text-right mr-3"> {{ item.product.price * item.quantity | currency }} </div>
+          </li>
+        </ul>
+      </div>
+      <div class="card-footer bg-transparent border-light">
+        <div class="row d-flex justify-content-end">
+          <span class="font-weight-bold">Total = </span>
+          <span class="font-weight-bold ml-2 mr-5"> {{ order.totalPrice | currency }} </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

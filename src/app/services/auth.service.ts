@@ -24,7 +24,8 @@ export class AuthService {
     .then(response => {
       console.log(response);
       if (response.user) { this.userService.save(response.user); }
-      this.router.navigateByUrl(returnUrl);
+      if (returnUrl === '/check-out') this.router.navigate(['/check-out'], { queryParams: {localCart: 'true'} })
+      else this.router.navigateByUrl(returnUrl);
     })
     .catch(err => console.log(err));
   }

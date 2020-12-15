@@ -1,3 +1,10 @@
 .dropdown-toggle {
     cursor: pointer;
 }
+.current {
+    color: #128c57 !important;
+    font-weight: bold;
+}
+a:hover {
+    color: #128c57 !important;
+}

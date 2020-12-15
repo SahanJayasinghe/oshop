@@ -24,6 +24,11 @@ export class ShoppingCart {
     return Object.keys(this.items);
   }
 
+  hasItems(): boolean {
+    if (!this.items) return false;
+    return Object.keys(this.items).length !== 0;
+  }
+
   getItemsArray(): CartItem[] {
     let itemsArr: CartItem[] = [];
     if (!this.items) return [];

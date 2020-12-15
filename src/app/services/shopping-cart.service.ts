@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 import { AppUser } from '../models/app-user';
@@ -15,7 +16,7 @@ export class ShoppingCartService {
   // public cart$: Observable<ShoppingCart>;
   public cartId$: BehaviorSubject<string> = new BehaviorSubject(null);
 
-  constructor(private db: AngularFireDatabase, private userService: UserService) {}
+  constructor(private db: AngularFireDatabase, private userService: UserService, private route: ActivatedRoute) {}
 
   get Cart$(): Observable<ShoppingCart> {
     return this.cartId$.pipe(switchMap(cartId => {
@@ -57,12 +58,15 @@ export class ShoppingCartService {
       // console.log(`initializeUserCart method - appUser cartId : ${this.appUser.cartId}`)
       // call method to confirm on moving local items to cart and take action based on the response
       this.getCartbyId(this.appUser.cartId).pipe(take(1)).subscribe(userCart => {
-        if (userCart.getItemKeys().length !== 0) {
+        let checkoutLocal = this.route.snapshot.queryParamMap.get('localCart') && this.route.snapshot.queryParamMap.get('localCart') === 'true';
+        if (userCart.getItemKeys().length !== 0 && !checkoutLocal) {
           console.log(`initializeUserCart method - appUser cart ${this.appUser.cartId} has items`)
           this.populateUserCart(true);
         }
         else {
-          console.log(`initializeUserCart method - appUser cart '${this.appUser.cartId}' is empty`)
+          (!checkoutLocal)
+           ? console.log(`initializeUserCart method - appUser cart '${this.appUser.cartId}' is empty`)
+           : console.log(`initializeUserCart method - user checkout local cart`)
           this.populateUserCart();
           // this.cartId$.next(this.appUser.cartId)
         }

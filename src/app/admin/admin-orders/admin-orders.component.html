@@ -1,1 +1,29 @@
-<p>admin-orders works!</p>
+<div class="row justify-content-center mb-4">
+  <div class="col-md-8">
+    <h4 class="display-4">Manage Orders</h4>
+  </div>
+</div>
+<table *ngIf="orders.length" class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Customer</th>
+      <th>Location</th>
+      <th>Ordered Date</th>
+      <th>Total Price</th>
+      <th>Total Items</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders; index as i">
+      <th scope="row"> {{ i+1 }} </th>
+      <td>{{ order.shipping.name }}</td>
+      <td>{{ order.shipping.city }}</td>
+      <td>{{ order.datePlaced | date:'medium' }}</td>
+      <td>{{ order.totalPrice | currency }}</td>
+      <td>{{ getItemCount(order) }}</td>
+      <td><a [routerLink]="['/admin/orders/', order.key]">View</a></td>
+    </tr>
+  </tbody>
+</table>

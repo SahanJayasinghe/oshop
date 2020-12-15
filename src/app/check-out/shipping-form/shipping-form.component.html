@@ -1,0 +1,39 @@
+<!-- <p>shipping-form works!</p> -->
+<p class="text-info font-weight-bold pb-2 px-3" style="font-size: larger;">Delivery Details</p>
+<form #f="ngForm" (ngSubmit)="submit(f.value)">
+  <div class="form-group">
+    <label for="name">Customer Name</label>
+    <input #name="ngModel" ngModel type="text" name="name" id="name" class="form-control" placeholder="customer's name" maxlength="25" pattern="^(?=.*[A-Za-z])[A-Za-z\d\-/()\\.,\s]{1,25}$" required>
+    <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+      <div *ngIf="name.errors.required">Customer Name is required </div>
+      <div *ngIf="name.errors.maxlength">Customer Name shouldn't be more than 25 characters long </div>
+      <div *ngIf="name.errors.pattern">Customer Name should contain atleast one alphabetic character & shouldn't contain special characters</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="line1">Address Line 1</label>
+    <input #line1="ngModel" ngModel type="text" name="line1" id="line1" class="form-control" placeholder="1st part of the address.." maxlength="50" required>
+    <div *ngIf="line1.touched && line1.invalid" class="alert alert-danger">
+      <div *ngIf="line1.errors.required">Address Line 1 is required </div>
+      <div *ngIf="line1.errors.maxlength">Address Line 1 shouldn't be more than 50 characters long </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="line2">Address Line 2</label>
+    <input #line2="ngModel" ngModel type="text" name="line2" id="line2" class="form-control" placeholder="2nd part of the address.." maxlength="50" required>
+    <div *ngIf="line2.touched && line2.invalid" class="alert alert-danger">
+      <div *ngIf="line2.errors.required">Address Line 2 is required </div>
+      <div *ngIf="line2.errors.maxlength">Address Line 2 shouldn't be more than 50 characters long </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="city">City</label>
+    <input #city="ngModel" ngModel type="text" name="city" id="city" class="form-control" placeholder="city" maxlength="25" pattern="^(?=.*[A-Za-z])[A-Za-z\d\-/()\\.,\s]{1,25}$" required>
+    <div *ngIf="city.touched && city.invalid" class="alert alert-danger">
+      <div *ngIf="city.errors.required">City is required </div>
+      <div *ngIf="city.errors.maxlength">City shouldn't be more than 25 characters long </div>
+      <div *ngIf="city.errors.pattern">City should contain atleast one alphabetic character & shouldn't contain special characters</div>
+    </div>
+  </div>
+  <button class="btn btn-lg btn-success" [disabled]="!f.valid"> Confirm Checkout </button>
+</form>

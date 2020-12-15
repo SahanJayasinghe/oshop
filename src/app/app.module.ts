@@ -27,6 +27,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { ProductCardComponent } from './common/product-card/product-card.component';
 import { ProgressBarComponent } from './common/progress-bar/progress-bar.component';
 import { CategoryListComponent } from './products/category-list/category-list.component';
+import { ProductQuantityComponent } from './common/product-quantity/product-quantity.component';
+import { ShippingFormComponent } from './check-out/shipping-form/shipping-form.component';
 
 import { SortableHeader } from './common/directives/sortable.directive';
 
@@ -38,7 +40,8 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { ProductsTableService } from './services/products-table.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
-import { ProductQuantityComponent } from './common/product-quantity/product-quantity.component';
+import { OrderService } from './services/order.service';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,9 @@ import { ProductQuantityComponent } from './common/product-quantity/product-quan
     ProgressBarComponent,
     SortableHeader,
     CategoryListComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    ShippingFormComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +85,8 @@ import { ProductQuantityComponent } from './common/product-quantity/product-quan
     AuthGuard,
     AdminAuthGuard,
     ProductsTableService,
-    ShoppingCartService
+    ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

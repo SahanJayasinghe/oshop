@@ -4,6 +4,7 @@ import { AppUser } from '../models/app-user';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { ShoppingCart } from '../models/shopping-cart';
 import { Observable } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,7 +15,7 @@ export class NavBarComponent implements OnInit {
   appUser: AppUser;
   cart$: Observable<ShoppingCart>;
 
-  constructor(private authService: AuthService, private cartService: ShoppingCartService) {}
+  constructor(private authService: AuthService, private cartService: ShoppingCartService, public router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.authService.appUser$.subscribe(appUser => { 

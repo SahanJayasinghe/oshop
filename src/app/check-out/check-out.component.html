@@ -1,1 +1,31 @@
-<p>check-out works!</p>
+<!-- <p>check-out works!</p> -->
+<div class="row justify-content-center py-3">
+  <div class="col-md-8">
+    <h4 class="display-4">Order Confirmation</h4>
+  </div>
+</div>
+<div *ngIf="cart" class="row">
+  <div class="col-md-6">
+    <app-shipping-form (confirm)="placeOrder($event)"></app-shipping-form>
+  </div>
+  <div class="col-md-6">
+    <div class="card border-success mx-5 my-3">
+      <div class="card-header bg-transparent border-success font-weight-bold">Order Summary</div>
+      <div class="card-body text-dark">
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let key of cart.getItemKeys()" class="list-group-item row d-flex justify-content-between">
+            <div class="col-5"> {{ cart.items[key].title }} </div>
+            <div class="col-2"> x {{ cart.items[key].quantity }} </div>
+            <div> {{ cart.items[key].price * cart.items[key].quantity | currency }} </div>
+          </li>
+        </ul>
+      </div>
+      <div class="card-footer bg-transparent border-success">
+        <div class="row d-flex justify-content-end">
+          <span class="font-weight-bold">Total = </span>
+          <span class="font-weight-bold mx-3"> {{ cart.getTotalPrice() | currency }} </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
