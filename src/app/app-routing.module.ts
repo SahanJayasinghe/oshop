@@ -11,10 +11,10 @@ import { LoginComponent } from './login/login.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-
-import { AuthGuard } from './services/auth-guard.service';
-import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+
+import { AuthGuard } from './shared/services/auth-guard.service';
+import { AdminAuthGuard } from './services/admin-auth-guard.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

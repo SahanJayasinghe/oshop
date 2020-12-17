@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ShippingDetails } from 'src/app/models/order';
+import { ShippingDetails } from 'src/app/shared/models/order';
 
 @Component({
   selector: 'app-shipping-form',

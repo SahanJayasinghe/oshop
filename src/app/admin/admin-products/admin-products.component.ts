@@ -2,12 +2,12 @@ import { Component, OnInit, OnDestroy, QueryList, ViewChildren } from '@angular/
 import { DecimalPipe } from '@angular/common';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ProductService } from '../../services/product.service';
-import { CategoryService } from '../../services/category.service';
-import { Product } from '../../models/product';
-import { Category } from '../../models/category';
-import { SortableHeader, SortEvent} from '../../common/directives/sortable.directive';
-import { ProductsTableService } from '../../services/products-table.service';
+import { ProductService } from '../../shared/services/product.service';
+import { CategoryService } from '../../shared/services/category.service';
+import { Product } from '../../shared/models/product';
+import { Category } from '../../shared/models/category';
+import { SortableHeader, SortEvent} from '../../shared/directives/sortable.directive';
+import { ProductsTableService } from '../../shared/services/products-table.service';
 
 @Component({
   selector: 'app-admin-products',

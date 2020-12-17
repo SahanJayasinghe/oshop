@@ -10,6 +10,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
+import { SharedModule } from 'src/app/shared/shared.module';
+
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,24 +26,11 @@ import { LoginComponent } from './login/login.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
-import { ProductCardComponent } from './common/product-card/product-card.component';
-import { ProgressBarComponent } from './common/progress-bar/progress-bar.component';
 import { CategoryListComponent } from './products/category-list/category-list.component';
-import { ProductQuantityComponent } from './common/product-quantity/product-quantity.component';
 import { ShippingFormComponent } from './check-out/shipping-form/shipping-form.component';
-
-import { SortableHeader } from './common/directives/sortable.directive';
-
-import { AuthService } from './services/auth.service';
-import { UserService } from './services/user.service';
-import { CategoryService } from './services/category.service';
-import { ProductService } from './services/product.service';
-import { AuthGuard } from './services/auth-guard.service';
-import { AdminAuthGuard } from './services/admin-auth-guard.service';
-import { ProductsTableService } from './services/products-table.service';
-import { ShoppingCartService } from './services/shopping-cart.service';
-import { OrderService } from './services/order.service';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+
+import { AdminAuthGuard } from './services/admin-auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -56,12 +45,8 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     LoginComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    ProductFormComponent,
-    ProductCardComponent,
-    ProgressBarComponent,
-    SortableHeader,
+    ProductFormComponent,    
     CategoryListComponent,
-    ProductQuantityComponent,
     ShippingFormComponent,
     OrderDetailsComponent
   ],
@@ -75,18 +60,11 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     AngularFireAuthModule,
     AngularFireStorageModule,
     NgbModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    SharedModule
   ],
   providers: [
-    AuthService,
-    UserService,
-    CategoryService,
-    ProductService,
-    AuthGuard,
     AdminAuthGuard,
-    ProductsTableService,
-    ShoppingCartService,
-    OrderService
   ],
   bootstrap: [AppComponent]
 })

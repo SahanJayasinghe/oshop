@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { forkJoin, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators'
-import { Category } from '../models/category';
-import { Product } from '../models/product';
-import { ShoppingCart } from '../models/shopping-cart';
-import { CategoryService } from '../services/category.service';
-import { ProductService } from '../services/product.service';
-import { ShoppingCartService } from '../services/shopping-cart.service';
+import { Category } from '../shared/models/category';
+import { Product } from '../shared/models/product';
+import { ShoppingCart } from '../shared/models/shopping-cart';
+import { CategoryService } from '../shared/services/category.service';
+import { ProductService } from '../shared/services/product.service';
+import { ShoppingCartService } from '../shared/services/shopping-cart.service';
 
 @Component({
   selector: 'app-home',

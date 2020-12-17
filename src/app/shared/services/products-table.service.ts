@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { debounceTime, delay, switchMap, tap, map } from 'rxjs/operators';
 import { Product } from '../models/product';
 import { ProductService } from './product.service';
-import { SortColumn, SortDirection } from '../common/directives/sortable.directive';
+import { SortColumn, SortDirection } from '../directives/sortable.directive';
 
 interface SearchResult {
   products: Product[];

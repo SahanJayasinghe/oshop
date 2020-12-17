@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Category } from 'src/app/models/category';
-import { CategoryService } from 'src/app/services/category.service';
+import { Category } from 'src/app/shared/models/category';
+import { CategoryService } from 'src/app/shared/services/category.service';
 
 @Component({
   selector: 'app-category-list',
