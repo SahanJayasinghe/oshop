@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from '../../shared/services/category.service';
+import { CategoryService } from '../../../shared/services/category.service';
 import { Category } from 'src/app/shared/models/category';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { finalize } from 'rxjs/operators';
-import { Product } from '../../shared/models/product';
+import { Product } from '../../../shared/models/product';
 import { SnapshotAction } from '@angular/fire/database';
-import { ProductService } from '../../shared/services/product.service';
+import { ProductService } from '../../../shared/services/product.service';
 import { NgxDropzoneChangeEvent } from 'ngx-dropzone';
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 import { Router, ActivatedRoute } from '@angular/router';

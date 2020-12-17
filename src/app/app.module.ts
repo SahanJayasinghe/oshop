@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgxDropzoneModule } from 'ngx-dropzone';
+// import { NgxDropzoneModule } from 'ngx-dropzone';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -11,6 +11,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AdminModule } from 'src/app/admin/admin.module';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,14 +24,10 @@ import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { LoginComponent } from './login/login.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryListComponent } from './products/category-list/category-list.component';
 import { ShippingFormComponent } from './check-out/shipping-form/shipping-form.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 
-import { AdminAuthGuard } from './services/admin-auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -43,9 +40,6 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
     OrderSuccessComponent,
     MyOrdersComponent,
     LoginComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
-    ProductFormComponent,    
     CategoryListComponent,
     ShippingFormComponent,
     OrderDetailsComponent
@@ -60,12 +54,11 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
     AngularFireAuthModule,
     AngularFireStorageModule,
     NgbModule,
-    NgxDropzoneModule,
-    SharedModule
+    // NgxDropzoneModule,
+    SharedModule,
+    AdminModule
   ],
-  providers: [
-    AdminAuthGuard,
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
