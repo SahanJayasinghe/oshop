@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Order } from '../shared/models/order';
-import { AuthService } from '../shared/services/auth.service';
-import { OrderService } from '../shared/services/order.service';
+import { Order } from 'src/app/shared/models/order';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { OrderService } from 'src/app/shared/services/order.service';
 
 @Component({
   selector: 'app-my-orders',

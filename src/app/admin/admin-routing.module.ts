@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { OrderDetailsComponent } from '../order-details/order-details.component';
+import { OrderDetailsComponent } from 'src/app/shared/components/order-details/order-details.component';
 import { AuthGuard } from '../shared/services/auth-guard.service';
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './components/admin-products/admin-products.component';

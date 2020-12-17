@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { SortableHeader } from './directives/sortable.directive';
+
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
@@ -18,8 +21,9 @@ import { OrderService } from './services/order.service';
   declarations: [
     ProductCardComponent,
     ProgressBarComponent,
+    ProductQuantityComponent,
+    OrderDetailsComponent,
     SortableHeader,
-    ProductQuantityComponent
   ],
   imports: [
     CommonModule
@@ -27,8 +31,9 @@ import { OrderService } from './services/order.service';
   exports: [
     ProductCardComponent,
     ProgressBarComponent,
+    ProductQuantityComponent,
+    OrderDetailsComponent,
     SortableHeader,    
-    ProductQuantityComponent
   ],
   providers: [    
     AuthService,
