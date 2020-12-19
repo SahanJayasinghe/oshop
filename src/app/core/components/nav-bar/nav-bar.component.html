@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top px-5">
-  <a class="navbar-brand" routerLink="/" style="color:#128c57">Organic Shop</a>
+  <a class="navbar-brand pb-2" routerLink="/">
+    <i class="fa fa-leaf" aria-hidden="true" style="color: #39e82e;"></i>
+    <span style="color:#128c57; font-family: 'Garamond'"> Organic Shop </span>
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,15 +12,15 @@
       <div class="col-md-9">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" [class.current]="router.isActive('', true)" routerLink="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" [class.current]="router.isActive('', true)" style="font-size: large;" routerLink="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/products" [class.current]="router.isActive('products', false)">Products</a>
+            <a class="nav-link" routerLink="/products" style="font-size: large;" [class.current]="router.isActive('products', false)">Products</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/shopping-cart" [class.current]="router.isActive('shopping-cart', false)">
-              Shopping Cart
-              <span *ngIf="cart$ | async as cart" class="badge badge-warning badge-pill"> {{cart.totalQuantity}} </span>
+              <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+              <span *ngIf="cart$ | async as cart" class="badge badge-warning badge-pill ml-1"> {{cart.totalQuantity}} </span>
             </a>
           </li>
         </ul>
